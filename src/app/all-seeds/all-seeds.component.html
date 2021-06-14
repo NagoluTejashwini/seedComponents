@@ -1,0 +1,39 @@
+<table >
+
+    <tr>
+        <td>Image</td>
+        <td>Name</td>
+        <td>Bloom Time</td>
+        <td>Watering</td>
+        <td>Difficulty Level</td>
+        <td>Temperature</td>
+        <td>Type of Seed</td>
+        <td>Description</td>
+        <td>Stock</td>
+        <td>SeedsPerPacket</td>
+        <td>SeedsCost</td>
+        <td>Rating</td>
+    </tr>
+
+    
+    <tr *ngFor = "let seed of getAllSeeds()">
+        <td> <img src = "{{seed.image}}" width="100" height="100">  </td>
+        <td>{{seed.commonName}}</td>
+        <td>{{seed.bloomTime}}</td>
+        <td>{{seed.watering}}</td>
+        <td>{{seed.difficultyLevel}}</td>
+        <td>{{seed.temparature}}</td>
+        <td>{{seed.typeOfSeeds}}</td>
+        <td>{{seed.seedsDescription | stringPipe}}</td>
+        <td>{{seed.seedsStock}}</td>
+        <td>{{seed.seedsPerPacket}}</td>
+        <td>{{seed.seedsCost | currency:'INR':'symbol'}}</td>
+        <td >
+            <div> 
+                <img  *ngFor = "let n of getRating(seed.rating)" src = "assets/images/rating.jpg"  width="10" height="10"/>
+            </div>
+        </td>
+        <td> <button (click)="addToCart()">Add to Cart</button></td>
+        <td> <button (click) = "doShare(seed.commonName)">Share</button></td>
+       </tr>
+</table>
